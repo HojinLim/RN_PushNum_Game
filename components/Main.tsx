@@ -1,10 +1,33 @@
-import React from "react";
-import { Text, View, StyleSheet } from "react-native";
+import React, { useState } from "react";
+import { Text, View, StyleSheet, TextInput } from "react-native";
+
 
 const Main = () => {
+  const [modalIsVisible, setModalIsVisible] = useState(false);
+  const [enteredNumber, setEnteredNumber] = useState("");
+  const onPressHandler = () => {
+    setModalIsVisible(true);
+  };
+
+
+  function numberInputHandler(enteredText: string) {
+    setEnteredNumber(enteredText);
+  }
+
   return (
     <View style={styles.container}>
       <Text>This is Main Page</Text>
+      {/* <MyModal visible={modalIsVisible}/> */}
+      <TextInput
+        style={styles.inputPad}
+        maxLength={10}
+        keyboardType="email-address"
+        autoCapitalize="none"
+        autoCorrect={false}
+        onChangeText={numberInputHandler}
+        value={enteredNumber}
+      />
+  
     </View>
   );
 };
@@ -17,5 +40,16 @@ const styles = StyleSheet.create({
     backgroundColor: "#fff",
     alignItems: "center",
     justifyContent: "center",
+  },
+  inputPad: {
+    height: 50,
+    width: 200,
+    fontSize: 32,
+    borderBottomColor: 'black',
+    borderBottomWidth: 2,
+    color: 'black',
+    marginVertical: 8,
+    fontWeight: "bold",
+    textAlign: "center",
   },
 });
