@@ -1,14 +1,12 @@
 import React, { useState } from "react";
 import { Text, View, StyleSheet, TextInput } from "react-native";
 
-
 const Main = () => {
   const [modalIsVisible, setModalIsVisible] = useState(false);
   const [enteredNumber, setEnteredNumber] = useState("");
   const onPressHandler = () => {
     setModalIsVisible(true);
   };
-
 
   function numberInputHandler(enteredText: string) {
     setEnteredNumber(enteredText);
@@ -27,7 +25,6 @@ const Main = () => {
         onChangeText={numberInputHandler}
         value={enteredNumber}
       />
-  
     </View>
   );
 };
@@ -45,9 +42,9 @@ const styles = StyleSheet.create({
     height: 50,
     width: 200,
     fontSize: 32,
-    borderBottomColor: 'black',
+    borderBottomColor: "black",
     borderBottomWidth: 2,
-    color: 'black',
+    color: "black",
     marginVertical: 8,
     fontWeight: "bold",
     textAlign: "center",

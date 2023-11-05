@@ -77,7 +77,7 @@ function AuthForm({
         )}
         <Input
           label="Password"
-          keyboardType={""}
+          keyboardType="number-pad"
           onUpdateValue={updateInputValueHandler.bind(AuthForm, "password")}
           secure
           value={enteredPassword}
@@ -86,7 +86,7 @@ function AuthForm({
         {!isLogin && (
           <Input
             label="Confirm Password"
-            keyboardType={""}
+            keyboardType="number-pad"
             onUpdateValue={updateInputValueHandler.bind(
               AuthForm,
               "confirmPassword"

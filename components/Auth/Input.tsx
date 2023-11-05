@@ -1,4 +1,4 @@
-import { View, Text, TextInput, StyleSheet } from "react-native";
+import { View, Text, TextInput, StyleSheet, KeyboardType } from "react-native";
 
 import { Colors } from "../../constants/styles";
 
@@ -11,7 +11,7 @@ function Input({
   isInvalid,
 }: {
   label: any;
-  keyboardType: any;
+  keyboardType: KeyboardType;
   secure: any;
   onUpdateValue: any;
   value: any;

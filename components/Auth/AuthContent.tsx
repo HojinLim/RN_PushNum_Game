@@ -1,15 +1,21 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Alert, StyleSheet, View } from "react-native";
-
 import FlatButton from "../ui/FlatButton";
 import AuthForm from "./AuthForm";
 import { Colors } from "../../constants/styles";
+import { useNavigation } from "@react-navigation/native";
+import { StackNavigationProp } from "@react-navigation/stack";
+
+export type RootStackParam = {
+  Signup: undefined;
+  Login: undefined;
+};
 
 function AuthContent({
   isLogin,
   onAuthenticate,
 }: {
-  isLogin: any;
+  isLogin: boolean;
   onAuthenticate: any;
 }) {
   const [credentialsInvalid, setCredentialsInvalid] = useState({
@@ -18,10 +24,18 @@ function AuthContent({
     confirmEmail: false,
     confirmPassword: false,
   });
+  const navigation = useNavigation<StackNavigationProp<RootStackParam>>();
 
   function switchAuthModeHandler() {
-    // Todo
+    if (isLogin) {
+      navigation.replace("Signup");
+    } else {
+      navigation.replace("Login");
+    }
   }
+  useEffect(() => {
+    console.log(isLogin);
+  }, [isLogin]);
 
   function submitHandler(credentials: any) {
     let { email, confirmEmail, password, confirmPassword } = credentials;
