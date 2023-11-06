@@ -1,9 +1,9 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tokenSlice from "./tokenSlice";
+import profileSlice from "./tokenSlice";
 
 export const store = configureStore({
   reducer: {
-    token: tokenSlice,
+    profile: profileSlice,
   },
 });
 

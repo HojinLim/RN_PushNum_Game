@@ -32,7 +32,7 @@ function AuthStack() {
   );
 }
 async function logout(dispatch: Dispatch<AnyAction>) {
-  dispatch(setToken(""));
+  dispatch(setToken({ email: "", idToken: "" }));
   await AsyncStorage.removeItem("token");
   Alert.alert("로그아웃 되었습니다!");
 }
@@ -69,7 +69,8 @@ function AuthenticatedStack() {
 }
 
 function Navigation() {
-  const token = useSelector((state: RootState) => state.token.content);
+  const token = useSelector((state: RootState) => state.profile.idToken);
+  const email = useSelector((state: RootState) => state.profile.email);
   return (
     <NavigationContainer>
       {!token && <AuthStack />}
@@ -83,13 +84,13 @@ function Root() {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    
     async function fetchToken() {
-      const storedToken = await AsyncStorage.getItem("token");
-      console.log(storedToken);
-      if (storedToken) {
-        dispatch(setToken(storedToken));
-        AsyncStorage.setItem("token", storedToken);
+      const profile = await AsyncStorage.getItem("token");
+
+      // console.log(profile);
+      if (profile) {
+        // dispatch(setToken(storedToken));
+        // AsyncStorage.setItem("token", storedToken);
       }
       setIsTryingLogin(false);
     }

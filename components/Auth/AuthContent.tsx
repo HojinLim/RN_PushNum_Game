@@ -34,7 +34,7 @@ function AuthContent({
     }
   }
   useEffect(() => {
-    console.log(isLogin);
+    // console.log(isLogin);
   }, [isLogin]);
 
   function submitHandler(credentials: any) {

@@ -22,7 +22,8 @@ function SignupScreen() {
     try {
       const token = await createUser(email, password);
       dispatch(setToken(token));
-      AsyncStorage.setItem("token", token);
+      AsyncStorage.setItem("profile", token);
+      
     } catch (error) {
       Alert.alert("Login Error!", "Some Error occured! Try it later");
     }

@@ -1,15 +1,12 @@
 import axios from "axios";
 import { API_KEY } from "@env";
-
-interface Token {
-  idToken: string;
-}
+import { Profile } from "../constants/types";
 
 async function authenticate(
   mode: string,
   email: string,
   password: string
-): Promise<Token> {
+): Promise<Profile> {
   const url = `https://identitytoolkit.googleapis.com/v1/accounts:${mode}?key=${API_KEY}`;
 
   const response = await axios.post(url, {
@@ -18,7 +15,6 @@ async function authenticate(
     returnSecureToken: true,
   });
 
-  // console.log(response.data);
 
   return response.data;
 }
