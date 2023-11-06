@@ -4,11 +4,20 @@ import { useEffect, useState } from "react";
 
 import { StyleSheet, Text, View } from "react-native";
 import { Profile } from "../constants/types";
-// import { token } from "../util/tokenManager";
+import GamePage from "./GamePage";
+
+export type RootStackParamList = {
+  Home: undefined;
+  Test: undefined;
+  Game: any;
+};
 
 function WelcomeScreen() {
   const [fetchedMessage, setFetchedMesssage] = useState("");
   const [profile, setProfile] = useState<Profile>();
+
+
+  // navigation.navigate("Game");
   // Async 함수 내에서 데이터 가져오기
   async function retrieveProfile() {
     try {
@@ -45,6 +54,7 @@ function WelcomeScreen() {
       <Text style={styles.title}>Welcome!</Text>
       <Text>You authenticated successfully!</Text>
       <Text>{fetchedMessage}</Text>
+      <GamePage/>
     </View>
   );
 }

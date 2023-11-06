@@ -1,8 +1,20 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
+import {
+  GestureResponderEvent,
+  Pressable,
+  StyleSheet,
+  Text,
+  View,
+} from "react-native";
 
 import { Colors } from "../../constants/styles";
 
-function Button({ children, onPress }: { children: any; onPress: any }) {
+function Button({
+  children,
+  onPress,
+}: {
+  children: string;
+  onPress: (event: GestureResponderEvent) => void;
+}) {
   return (
     <Pressable
       style={({ pressed }) => [styles.button, pressed && styles.pressed]}

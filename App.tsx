@@ -14,6 +14,7 @@ import { RootState, store } from "./store/store";
 import { setToken } from "./store/tokenSlice";
 import { Alert } from "react-native";
 import { AnyAction } from "@reduxjs/toolkit";
+import GamePage from "./screens/GamePage";
 
 const Stack = createNativeStackNavigator();
 
@@ -28,6 +29,7 @@ function AuthStack() {
     >
       <Stack.Screen name="Login" component={LoginScreen} />
       <Stack.Screen name="Signup" component={SignupScreen} />
+      <Stack.Screen name="Game" component={GamePage} />
     </Stack.Navigator>
   );
 }
@@ -87,10 +89,9 @@ function Root() {
     async function fetchToken() {
       const profile = await AsyncStorage.getItem("token");
 
-      // console.log(profile);
+
       if (profile) {
-        // dispatch(setToken(storedToken));
-        // AsyncStorage.setItem("token", storedToken);
+
       }
       setIsTryingLogin(false);
     }
